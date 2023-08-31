@@ -2,13 +2,34 @@ import { Formik, Form, Field, ErrorMessage, replace } from "formik";
 import {Link } from 'react-router-dom';
 import AuthTemp from "./AuthTemp";
 import { useNavigate } from "react-router-dom";
+import Nav from "./Navbar";
 // import SecurityQuestionForm from './Question';
 import * as Yup from "yup";
-const AdminSignUpForm = () => {
-  return <AuthTemp component={SignUp} />;
-};
 
+
+
+const AdminSignUpForm = () => {
+  const navigate = useNavigate();
+
+  // Rest of the code...
+
+  return (
+    <>
+      <Nav /> {/* Load the Nav component here */}
+      <div className="signup-page" style={{backgroundColor: "#d2cfcf"}}>
+        <div className="picture"></div>
+        <div className="signup-col-form">
+          <div style={{minWidth: "450px"}}>
+            <h2>Create Admin Account</h2>
+            <SignUp />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 export default AdminSignUpForm;
+
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -72,7 +93,7 @@ const SignUp = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center signup-msg min-w-[45%] max-w-[50%] m-auto hidden md:block">
+      <div className="flex flex-col items-center signup-msg min-w-[45%] max-w-[50%] m-auto hidden md:">
         <h2 className="text-lg font-medium text-gray-900 section-heading">
         Create your account
         </h2>
@@ -88,7 +109,7 @@ const SignUp = () => {
               <div className="w-[45%]">
                 <label
                   htmlFor="firstname"
-                  className="block text-sm font-medium text-gray-700"
+                  className=" text-sm font-medium text-gray-700"
                 >
                   Firstname
                 </label>
@@ -96,7 +117,7 @@ const SignUp = () => {
                   type="text"
                   name="firstname"
                   id="firstname"
-                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500  w-full sm:text-sm rounded-md border"
                 />
                 <ErrorMessage
                   name="firstname"
@@ -107,7 +128,7 @@ const SignUp = () => {
               <div className="w-[45%]">
                 <label
                   htmlFor="lastname"
-                  className="block text-sm font-medium text-gray-700"
+                  className=" text-sm font-medium text-gray-700"
                 >
                   Lastname
                 </label>
@@ -115,7 +136,7 @@ const SignUp = () => {
                   type="text"
                   name="lastname"
                   id="lastname"
-                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 w-full sm:text-sm rounded-md border"
                 />
                 <ErrorMessage
                   name="lastname"
@@ -127,7 +148,7 @@ const SignUp = () => {
             <div>
               <label
                 htmlFor="dateofbirth"
-                className="block text-sm font-medium text-gray-700"
+                className=" text-sm font-medium text-gray-700"
               >
                 Date of Birth
               </label>
@@ -135,7 +156,7 @@ const SignUp = () => {
                 type="date"
                 name="dateofbirth"
                 id="dateofbirth"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500  w-full sm:text-sm rounded-md border"
               />
               <ErrorMessage
                 name="dateofbirth"
@@ -146,7 +167,7 @@ const SignUp = () => {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
+                className=" text-sm font-medium text-gray-700"
               >
                 Email address
               </label>
@@ -154,7 +175,7 @@ const SignUp = () => {
                 type="email"
                 name="email"
                 id="email"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500  w-full sm:text-sm rounded-md border"
               />
               <ErrorMessage
                 name="email"
@@ -165,7 +186,7 @@ const SignUp = () => {
             <div>
               <label
                 htmlFor="contact"
-                className="block text-sm font-medium text-gray-700"
+                className=" text-sm font-medium text-gray-700"
               >
                 Contact No:
               </label>
@@ -173,7 +194,7 @@ const SignUp = () => {
                 type="number"
                 name="contact"
                 id="contact"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500  w-full sm:text-sm rounded-md border"
               />
               <ErrorMessage
                 name="contact"
@@ -184,7 +205,7 @@ const SignUp = () => {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-gray-700"
+                className=" text-sm font-medium text-gray-700"
               >
                 Password
               </label>
@@ -192,7 +213,7 @@ const SignUp = () => {
                 type="password"
                 name="password"
                 id="password"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500  w-full sm:text-sm rounded-md border"
               />
               <ErrorMessage
                 name="password"
@@ -203,7 +224,7 @@ const SignUp = () => {
             <div>
               <label
                 htmlFor="confirmPassword"
-                className="block text-sm font-medium text-gray-700"
+                className=" text-sm font-medium text-gray-700"
               >
                 Confirm Password
               </label>
@@ -211,7 +232,7 @@ const SignUp = () => {
                 type="password"
                 name="confirmPassword"
                 id="confirmPassword"
-                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                className="mt-1 focus:ring-indigo-500 focus:border-indigo-500  w-full sm:text-sm rounded-md border"
               />
               <ErrorMessage
                 name="confirmPassword"

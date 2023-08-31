@@ -139,7 +139,35 @@ export const SupportedNgoBanner = () => {
   );
 };
 
-export const ShareBanner = () => {
+const ShareWithImageOnWhatsApp = ({ imageUrl, message }) => {
+  
+
+ 
+
+  return (
+    <button onClick={handleShare}>Share on WhatsApp</button>
+  );
+};
+
+export const ShareBanner = ({page}) => {
+  const pageImg = {
+    "Support-Exceptional": "https://i.ibb.co/p4fdMcZ/ability-1.jpg",
+    "No-child-Hungry": "https://i.ibb.co/h2wbRJK/Child-Hunger-cover.jpg",
+    "Educate-Child": "https://i.ibb.co/58gQRnK/child-1.webp",
+    "Senior-Care" : "https://i.ibb.co/YXHVQWJ/elder1.jpg",
+    "Heal-Together": ""
+  }
+  const { message, imageUrl } = {
+    message: "cecheckout",
+    imageUrl: "https://images.unsplash.com/photo-1690047668868-1febad9a9c91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1280&q=80"
+  };
+  const encodedMessage = encodeURIComponent(message);
+  const whatsappUrl = `https://api.whatsapp.com/send?text=${encodedMessage}%20${imageUrl}`;
+
+  const handleShare = () => {
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
     <div className="section-2" style={{ background: "#f5f5f5" }}>
       <div className="section-container flex justify-between items-center">
@@ -165,7 +193,9 @@ export const ShareBanner = () => {
                 fontWeight: "500",
                 marginRight: "10px",
               }}
-              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fyour_website.com%2Fpage-url" target="_blank" rel="noopener noreferrer"
+              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fyour_website.com%2Fpage-url"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <i className="fa-brands fa-facebook"></i> &nbsp;&nbsp;Share on
               Facebook
@@ -173,7 +203,9 @@ export const ShareBanner = () => {
             <a
               className="focus:outline-none text-white focus:ring-4 focus:ring-green-300 font-medium rounded-md text-sm px-5 py-2.5 mr-2 mb-2 share-wa share-btn"
               style={{ fontSize: "1.2rem", fontWeight: "500" }}
-              href="whatsapp://send?text=Check%20out%20this%20amazing%20mission%20for%20social%20cause%21%20https%3A%2F%2Fyour_website.com%2Fpage-url" target="_blank" rel="noopener noreferrer"
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <i className="fa-brands fa-whatsapp"></i> &nbsp;&nbsp;Share on
               Whatsapp
@@ -184,6 +216,7 @@ export const ShareBanner = () => {
     </div>
   );
 };
+
 
 export const DonateComponent = ({ action, img }) => {
   const [toggleMode, setToggleMode] = useState(true);

@@ -7,7 +7,6 @@
   transition: 1s ease;
   animation: normal;
   margin-top: 56px;
-  z-index: 2000;
 }
 .links {
   text-align: center;
@@ -16,6 +15,8 @@
 #bg.active {
   right: 0px;
   width: 100%;
+  z-index: 10;
+
 }
 /* .ul1{
     margin-right: 230px;

@@ -2,10 +2,32 @@ import { Formik, Form, Field, ErrorMessage, replace } from "formik";
 import {Link } from 'react-router-dom';
 import AuthTemp from "./AuthTemp";
 import { useNavigate } from "react-router-dom";
+import Nav from "./Navbar";
 // import SecurityQuestionForm from './Question';
 import * as Yup from "yup";
-const SignUpForm = () => {
+/* const SignUpForm = () => {
   return <AuthTemp component={SignUp} />;
+};
+ */
+const SignUpForm = () => {
+  const navigate = useNavigate();
+
+  // Rest of the code...
+
+  return (
+    <>
+      <Nav /> {/* Load the Nav component here */}
+      <div className="signup-page" style={{backgroundColor: "#d2cfcf"}}>
+        <div className="picture"></div>
+        <div className="signup-col-form">
+          <div style={{minWidth: "450px"}}>
+          <SignUp />
+
+          </div>
+        </div>
+      </div>
+    </>
+  );
 };
 
 export default SignUpForm;
@@ -89,6 +111,7 @@ const SignUp = () => {
                 <label
                   htmlFor="firstname"
                   className="block text-sm font-medium text-gray-700"
+                  style={{backgroundColor: "transparent", color: "#000"}}
                 >
                   Firstname
                 </label>
@@ -96,7 +119,9 @@ const SignUp = () => {
                   type="text"
                   name="firstname"
                   id="firstname"
+                  style={{backgroundColor: "white"}}
                   className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                  
                 />
                 <ErrorMessage
                   name="firstname"
@@ -108,6 +133,7 @@ const SignUp = () => {
                 <label
                   htmlFor="lastname"
                   className="block text-sm font-medium text-gray-700"
+                  style={{backgroundColor: "transparent", color: "#000"}}
                 >
                   Lastname
                 </label>
@@ -115,6 +141,7 @@ const SignUp = () => {
                   type="text"
                   name="lastname"
                   id="lastname"
+                  style={{backgroundColor: "white"}}
                   className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                 />
                 <ErrorMessage
@@ -128,6 +155,7 @@ const SignUp = () => {
               <label
                 htmlFor="dateofbirth"
                 className="block text-sm font-medium text-gray-700"
+                style={{backgroundColor: "transparent", color: "#000"}}
               >
                 Date of Birth
               </label>
@@ -135,6 +163,8 @@ const SignUp = () => {
                 type="date"
                 name="dateofbirth"
                 id="dateofbirth"
+                
+                style={{backgroundColor: "white"}}
                 className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
               />
               <ErrorMessage
@@ -147,6 +177,7 @@ const SignUp = () => {
               <label
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700"
+                style={{backgroundColor: "transparent", color: "#000"}}
               >
                 Email address
               </label>
@@ -154,6 +185,7 @@ const SignUp = () => {
                 type="email"
                 name="email"
                 id="email"
+                style={{backgroundColor: "white"}}
                 className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
               />
               <ErrorMessage
@@ -166,6 +198,7 @@ const SignUp = () => {
               <label
                 htmlFor="contact"
                 className="block text-sm font-medium text-gray-700"
+                style={{backgroundColor: "transparent", color: "#000"}}
               >
                 Contact No:
               </label>
@@ -173,6 +206,7 @@ const SignUp = () => {
                 type="number"
                 name="contact"
                 id="contact"
+                style={{backgroundColor: "white"}}
                 className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
               />
               <ErrorMessage
@@ -185,6 +219,7 @@ const SignUp = () => {
               <label
                 htmlFor="password"
                 className="block text-sm font-medium text-gray-700"
+                style={{backgroundColor: "transparent", color: "#000"}}
               >
                 Password
               </label>
@@ -192,6 +227,7 @@ const SignUp = () => {
                 type="password"
                 name="password"
                 id="password"
+                style={{backgroundColor: "white"}}
                 className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
               />
               <ErrorMessage
@@ -204,6 +240,7 @@ const SignUp = () => {
               <label
                 htmlFor="confirmPassword"
                 className="block text-sm font-medium text-gray-700"
+                style={{backgroundColor: "transparent", color: "#000"}}
               >
                 Confirm Password
               </label>
@@ -211,6 +248,7 @@ const SignUp = () => {
                 type="password"
                 name="confirmPassword"
                 id="confirmPassword"
+                style={{backgroundColor: "white"}}
                 className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
               />
               <ErrorMessage

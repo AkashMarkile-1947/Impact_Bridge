@@ -41,8 +41,8 @@ const EmbraceAbilities = () => {
         if3=" Enable disabled individuals to lead fulfilling lives"
       />
       <DonateComponent action="Support Exceptional" img="/ability-4.jpeg" />
-      <SupportedNgoBanner />
-      <ShareBanner />
+      <SupportedNgoBanner/>
+      <ShareBanner page="Support-Exceptional"/>
       <Footer />
     </>
   );

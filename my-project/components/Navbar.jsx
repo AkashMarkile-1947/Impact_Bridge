@@ -1,9 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import NavbarBtn from "./NavbarBtn";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import "./navbar.css";
 
 export default function Nav({ color, toggle }) {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
+  const [ShowUserProfile, setUserProfile] = useState(false);
+  const navigate = useNavigate();
+
+  const loginData = JSON.parse(sessionStorage.getItem("login-data"));
+  const ngoLogin = sessionStorage.getItem("ngo-login");
+
+  useEffect(() => {
+    if (loginData || ngoLogin) {
+      setUserProfile((prev) => true);
+    }
+  }, [loginData, ngoLogin]);
+
+
+  const userProfile = () => {
+    if (loginData) {
+      if (loginData.isAdmin) {
+        navigate("../admin-dashboard", { replace: true });
+      } else {
+        navigate("../dashboard", { replace: true });
+      }
+    } else if (ngoLogin) {
+      navigate("ngo-dashboard", { replace: true });
+    }
+  };
+  
+
+
+  const Logout = () => {
+    if (loginData) {
+      sessionStorage.removeItem("login-data"); // Remove the item from sessionStorage
+    }
+    if (ngoLogin) {
+      sessionStorage.removeItem("ngo-login"); // Remove the item from sessionStorage
+    }
+    setUserProfile(() => false);
+    navigate("../", { replace: true });
+  };
 
   return (
     <>
@@ -20,82 +58,36 @@ export default function Nav({ color, toggle }) {
             >
               ImpactBridge
             </Link>
-            {toggle !== undefined ? <span/> : 
-            <NavbarBtn />}
-            <ul className="flex flex-col md:flex-row hidden md:flex list-none md:ml-auto">
-              <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
-                >
-                  <i className="fab fa-facebook-square text-lg leading-lg text-white opacity-75"></i>
-                  <span className="ml-2">Share</span>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
-                >
-                  <i className="fab fa-twitter text-lg leading-lg text-white opacity-75"></i>
-                  <span className="ml-2">Tweet</span>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
-                >
-                  <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i>
-                  <span className="ml-2">Pin</span>
-                </a>
-              </li>
-            </ul>
-            
-              <button
-                className="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block inline md:hidden outline-none focus:outline-none"
-                type="button"
-                onClick={() => setNavbarOpen(!navbarOpen)}
-              >
-                <i className="fas fa-bars"></i>
-              </button>
-          </div>
-          <div
-            className={
-              "lg:flex flex-grow items-center" +
-              (navbarOpen ? " flex" : " hidden")
+
+            <NavbarBtn />
+            <button
+              className="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block inline md:hidden outline-none focus:outline-none"
+              type="button"
+              onClick={() => setNavbarOpen(!navbarOpen)}
+            >
+              <i className="fas fa-bars"></i>
+            </button>
+            { 
+            ShowUserProfile ?
+            <div className="self-end flex">
+            <a
+              className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75 ml-2 border rounded-md"
+              href="#pablo"
+              onClick={userProfile}
+            >
+              <i className="fa-solid fa-user text-lg leading-lg text-white opacity-75"></i>
+              <span className="ml-2">USER</span>
+            </a>
+
+            <a
+              className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75 border rounded-md ml-2"
+              href="#pablo"
+              onClick={Logout}
+            >
+              <span className="ml-2">Logout</span>
+            </a>
+            </div> : null
             }
-            id="example-navbar-danger"
-          >
-            <ul className="flex flex-col lg:flex-row list-none lg:ml-auto">
-              <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
-                >
-                  <i className="fab fa-facebook-square text-lg leading-lg text-white opacity-75"></i>
-                  <span className="ml-2">Share</span>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
-                >
-                  <i className="fab fa-twitter text-lg leading-lg text-white opacity-75"></i>
-                  <span className="ml-2">Tweet</span>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75"
-                  href="#pablo"
-                >
-                  <i className="fab fa-pinterest text-lg leading-lg text-white opacity-75"></i>
-                  <span className="ml-2">Pin</span>
-                </a>
-              </li>
-            </ul>
           </div>
         </div>
       </nav>

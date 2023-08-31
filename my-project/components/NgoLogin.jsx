@@ -2,11 +2,31 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import AuthTemp from './AuthTemp';
 import { Link, useNavigate } from 'react-router-dom';
+import Nav from './Navbar';
 /* import { LockClosedIcon } from '@heroicons/react/solid';
  */
-function NgoLoginForm() {
+/* function NgoLoginForm() {
   return <AuthTemp component={NgoLogin} />
-}
+} */
+
+const NgoLoginForm = () => {
+  const navigate = useNavigate();
+
+  return (
+    <>
+      <Nav />
+      <div className="signup-page" >
+        <div className="picture"></div>
+        <div className="signup-col-form">
+          <div style={{minWidth: "450px", color: "#d2cfcf"}}>
+          <NgoLogin />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
 export default NgoLoginForm;
 
 const NgoLogin = () => {
@@ -59,26 +79,29 @@ const NgoLogin = () => {
           {({ isSubmitting }) => (
             <Form className="mt-8">
               <div className="">
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700" style={{backgroundColor: "transparent"}}>
                   Email address
                 </label>
                 <Field
                   type="email"
                   name="email"
                   id="email"
+                  style={{backgroundColor: "white"}}
+
                   className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                 />
                 <ErrorMessage name="email" component="div" className="text-red-500 text-sm mt-1" />
               </div>
 
               <div className="mt-6">
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="password" className="block text-sm font-medium text-gray-700" style={{backgroundColor: "transparent"}}>
                   Password
                 </label>
                 <Field
                   type="password"
                   name="password"
                   id="password"
+                  style={{backgroundColor: "white"}}
                   className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                 />
                 <ErrorMessage name="password" component="div" className="text-red-500 text-sm mt-1" />

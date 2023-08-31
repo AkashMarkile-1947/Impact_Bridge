@@ -96,14 +96,14 @@ const UserDashboard = () => {
 
   return (
     <>
-      <div class="grid-container">
-        <div class="navbar">
+      <div className="grid-container">
+        <div className="navbar">
           <Nav color="wadw" toggle="aaw" />
         </div>
-        <div class="sidebar">
+        <div className="sidebar">
           <Sidebar name={name} />
         </div>
-        <div class="main-content">
+        <div className="main-content">
           <div className="user-welcome">
             <div className="welcome-header">
               <h1 className="welcome-name">Welcome, {name}</h1>

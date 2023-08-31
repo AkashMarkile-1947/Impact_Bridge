@@ -2,12 +2,35 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import AuthTemp from './AuthTemp';
 import { Link, useNavigate } from 'react-router-dom';
+import Nav from './Navbar';
 /* import { LockClosedIcon } from '@heroicons/react/solid';
  */
-function AdminLoginForm() {
+/* function AdminLoginForm() {
   return <AuthTemp component={AdminLogin} />
-}
+} */
+
+const AdminLoginForm = () => {
+  const navigate = useNavigate();
+
+  // Rest of the code...
+
+  return (
+    <>
+      <Nav /> 
+      <div className="signup-page">
+        <div className="picture"></div>
+        <div className="signup-form">
+          <div style={{minWidth: "450px",color: "#d2cfcf"}}>
+            <AdminLogin />
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
 export default AdminLoginForm;
+
 
 const AdminLogin = () => {
   const navigate =  useNavigate();
@@ -37,6 +60,7 @@ const AdminLogin = () => {
     if(result.status === 'ok') {
       alert('success');
       sessionStorage.setItem('login-data', JSON.stringify(result));
+      sessionStorage.setItem('ngo-login', null);
       navigate("../admin-dashboard", {replace: true});
     } else {
       alert('error');
@@ -57,26 +81,28 @@ const AdminLogin = () => {
           {({ isSubmitting }) => (
             <Form className="mt-8">
               <div className="">
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700" style={{backgroundColor: "transparent"}}>
                   Email address
                 </label>
                 <Field
                   type="email"
                   name="email"
                   id="email"
+                  style={{backgroundColor: "#fff"}}
                   className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                 />
                 <ErrorMessage name="email" component="div" className="text-red-500 text-sm mt-1" />
               </div>
 
               <div className="mt-6">
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="password" className="block text-sm font-medium text-gray-700" style={{backgroundColor: "transparent"}}>
                   Password
                 </label>
                 <Field
                   type="password"
                   name="password"
                   id="password"
+                  style={{backgroundColor: "#fff"}}
                   className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
                 />
                 <ErrorMessage name="password" component="div" className="text-red-500 text-sm mt-1" />

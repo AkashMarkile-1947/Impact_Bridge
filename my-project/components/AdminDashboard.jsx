@@ -99,7 +99,9 @@ const AdminDashboard = () => {
           <Nav color="wadw" toggle="aaw" />
         </div>
         <div className="sidebar">
+          <div className="flex flex-col relative" style={{top: "50%", transform: "translateY(-50%)"}}>
           <Sidebar name={name} />
+          </div>
         </div>
         <div className="main-content">
           <div className="user-welcome">

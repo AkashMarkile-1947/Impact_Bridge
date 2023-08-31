@@ -5,7 +5,7 @@ import ChildHunger from "../components/ChildHunger";
 import App from "./App";
 import LoginForm from "../components/Login";
 import SignUpForm from "../components/Signup";
-import RegistrationForm1 from "../components/NgoForm";
+import RegistrationForm1 from '../components/NGOForm'
 import DocumentForm from "../components/NGOForm2";
 import NgoLoginForm from "../components/NgoLogin";
 import AdminSignUpForm from "../components/AdminSignup";

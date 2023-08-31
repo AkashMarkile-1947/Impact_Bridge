@@ -41,8 +41,8 @@ const HealingTogether = () => {
         Hs3="fa-solid fa-face-smile-beam"
       />
       <DonateComponent action="Heal Together" img="heal-2.jpg" />
-      <SupportedNgoBanner />
-      <ShareBanner />
+      <SupportedNgoBanner/>
+      <ShareBanner page="Heal-Together"/>
       <Footer />
     </>
   );

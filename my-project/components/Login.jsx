@@ -3,12 +3,39 @@ import * as Yup from 'yup';
 import AuthTemp from './AuthTemp';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import Nav from './Navbar';
+import './tailwind.css';
+import "./ngoform.css";
+
 /* import { LockClosedIcon } from '@heroicons/react/solid';
  */
-function LoginForm() {
+/* function LoginForm() {
   return <AuthTemp component={Login} />
-}
+} */
+
+const LoginForm = () => {
+  const navigate = useNavigate();
+
+  // Rest of the code...
+
+  return (
+    <>
+      <Nav /> {/* Load the Nav component here */}
+      <div className="signup-page" style={{backgroundColor: "#d2cfcf"}}>
+        <div className="picture"></div>
+        <div className="signup-col-form">
+          <div style={{minWidth: "450px"}}>
+          <Login />
+
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
 export default LoginForm;
+
 
 const Login = () => {
   const initialValues = { email: '', password: '' };
@@ -39,18 +66,20 @@ const Login = () => {
       alert('success');
       console.log(result);
       sessionStorage.setItem('login-data', JSON.stringify(result));
+      sessionStorage.setItem('ngo-login', null);
       navigate('../dashboard', {replace: true});
     } else {
       alert('error');
-      sessionStorage.setItem('login-data', "");
+      sessionStorage.setItem('login-data', null);
     }
     setSubmitting(false);
   };
+
   return (
         <>
-        <div className="flex flex-col items-center signup-msg min-w-[45%] max-w-[50%] m-auto hidden md:block">
+        <div className="flex flex-col items-center signup-msg min-w-[45%] max-w-[50%] m-auto hidden md:block" style={{flexDirection: "row"}}>
         
-          <h2 className="text-lg font-medium text-gray-900">Log in to your account</h2>
+          <h2 className="text-lg font-medium ">Log in to your account</h2>
         </div>
         <Formik
           initialValues={initialValues}
@@ -60,27 +89,29 @@ const Login = () => {
           {({ isSubmitting }) => (
             <Form className="mt-8">
               <div className="">
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="email" className="block text-sm font-medium white-bg" style={{backgroundColor: "transparent"}}>
                   Email address
                 </label>
                 <Field
                   type="email"
                   name="email"
                   id="email"
-                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm  rounded-md"
+                  style={{backgroundColor: "white"}}
                 />
                 <ErrorMessage name="email" component="div" className="text-red-500 text-sm mt-1" />
               </div>
 
               <div className="mt-6">
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="password" className="block text-sm font-medium " style={{backgroundColor: "transparent"}}>
                   Password
                 </label>
                 <Field
                   type="password"
                   name="password"
                   id="password"
-                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                  style={{backgroundColor: "white"}}
+                  className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm rounded-md"
                 />
                 <ErrorMessage name="password" component="div" className="text-red-500 text-sm mt-1" />
               </div>

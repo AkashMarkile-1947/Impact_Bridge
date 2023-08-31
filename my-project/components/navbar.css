@@ -1,0 +1,5 @@
+.user-profile {
+    background-image: url("/my-project/public/user-profile.jpeg");
+    background-position: center;
+    background-size: cover;
+}

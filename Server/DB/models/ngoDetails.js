@@ -35,10 +35,6 @@ const NgoDetails = new mongoose.Schema({
         type: String,
         required: true,
     },
-    socialMediaLinks: {
-        type: String,
-        required: true
-    },
     targetBeneficiaryGroups: {
         type: String,
         required: true

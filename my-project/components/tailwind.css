@@ -416,6 +416,13 @@ body {
  */  border-radius: 10px;
  
 }
+
+.gateway-header label, .gateway-form label, .details-div div p, .details-div div sub {
+  background-color: transparent;
+}
+.gateway-header select, .gateway-form input, .details-div input{
+  background-color: #fff;
+}
 .gateway-input {
   min-width: clamp(525px, 600px, 70%);
   background-color: rgba(255, 255, 255, 0.1);
@@ -553,6 +560,10 @@ body {
 .ngo-option:hover, option:hover {
   color: #fff;
   background-color: #c2410c;
+}
+.white-bg {
+  background-color: #fff;
+  color: black;
 }
 @media only screen and (max-width: 1000px) {
   .mission-card {

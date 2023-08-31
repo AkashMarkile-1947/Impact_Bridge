@@ -19,8 +19,9 @@ const NavbarBtn = () => {
           style={{ color: "#fffff" }}
         ></i>
         <br />
+        
       </div>
-      <div id="bg" className={clicked ? "#bg active" : "#bg"} style={{zIndex: 10}}>
+      <div id="bg" className={clicked ? "#bg active" : "#bg"} style={{zIndex: 1000}}>
         <div className="flex links">
           <ul className="flex flex-col col1">
             <li className="w-1/2">

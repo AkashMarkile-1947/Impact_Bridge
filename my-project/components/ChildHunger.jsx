@@ -42,8 +42,8 @@ const ChildHunger = () => {
         Hs3="fa-solid fa-people-group"
       />
       <DonateComponent action="No child Hungry" img="/Child-Hunger-cover.jpg" />
-      <SupportedNgoBanner />
-      <ShareBanner />
+      <SupportedNgoBanner/>
+      <ShareBanner page="No-child-Hungry" />
       <Footer />
     </>
   );

@@ -102,7 +102,9 @@ const PaymentGateway = () => {
     }).then((res) => res.json());
 
     if (response.status === "ok") {
-      console.log(response.data);
+      console.log("Transaction successful");
+      sessionStorage.setItem("gateway-data", {})
+      navigate('../', {replace: true})
       alert(response.data);
     } else {
       alert(response.data);

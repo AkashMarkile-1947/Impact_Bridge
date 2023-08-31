@@ -42,7 +42,7 @@ const ChildEmpowerment = () => {
       />
       <DonateComponent action="Educate a child" img="/childEdu-4.jpg" />
       <SupportedNgoBanner />
-      <ShareBanner />
+      <ShareBanner page="Educate-Child"/>
       <Footer />
     </>
   );

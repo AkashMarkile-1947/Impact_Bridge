@@ -43,7 +43,7 @@ const SeniorCare = () => {
       />
       <DonateComponent action="Senior-Care" img="elder4.jpeg" />
       <SupportedNgoBanner />
-      <ShareBanner />
+      <ShareBanner page="Senior-Care"/>
       <Footer />
     </>
   );
